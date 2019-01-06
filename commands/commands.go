@@ -84,6 +84,7 @@ func saveMemo(text string) {
 		lastCOUNTER = 1
 	}
 	newData := data.Data{Id: lastCOUNTER, Text: text}
+	fmt.Println("memo saved!")
 	writer.Write(([]byte)(newData.String()))
 }
 
