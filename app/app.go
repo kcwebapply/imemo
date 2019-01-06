@@ -1,19 +1,15 @@
 package app
 
 import (
-	"fmt"
-
 	"github.com/codegangsta/cli"
-
-	. "github.com/kcwebapply/imemo/config"
+	//. "github.com/kcwebapply/imemo/config"
 )
 
 var appName string
 var version string
 
 func init() {
-	config := GetConfig()
-	fmt.Println("config : ", config)
+	//config := GetConfig()
 	//appName = config.App.Name
 	//version = config.App.Version
 	appName = "imemo"
