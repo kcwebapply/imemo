@@ -13,7 +13,7 @@ func init() {
 	//appName = config.App.Name
 	//version = config.App.Version
 	appName = "imemo"
-	version = "1.0.0"
+	version = "1.2.0"
 }
 
 func GetApp() *cli.App {
