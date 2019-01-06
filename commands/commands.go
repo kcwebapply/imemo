@@ -9,11 +9,10 @@ import (
 	"strconv"
 
 	"github.com/codegangsta/cli"
-	config "github.com/kcwebapply/imemo/config"
 	data "github.com/kcwebapply/imemo/data"
 )
 
-var fileName = config.GetConfig().Sys.FileName
+var fileName = "data.txt" //config.GetConfig().Sys.FileName
 
 //GetAllMemo shows all memodata
 func GetAllMemo(c *cli.Context) {
