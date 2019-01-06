@@ -1,0 +1,5 @@
+[Sys]
+  fileName = "data.txt"
+[App]
+  name = "imemo"
+  version = "1.0.0"
