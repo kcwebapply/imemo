@@ -1,6 +1,8 @@
 package app
 
 import (
+	"fmt"
+
 	"github.com/codegangsta/cli"
 
 	. "github.com/kcwebapply/imemo/config"
@@ -11,8 +13,11 @@ var version string
 
 func init() {
 	config := GetConfig()
-	appName = config.App.Name
-	version = config.App.Version
+	fmt.Println("config : ", config)
+	//appName = config.App.Name
+	//version = config.App.Version
+	appName = "imemo"
+	version = "1.0.0"
 }
 
 func GetApp() *cli.App {
