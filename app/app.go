@@ -2,20 +2,12 @@ package app
 
 import (
 	"github.com/codegangsta/cli"
-	//. "github.com/kcwebapply/imemo/config"
 )
 
-var appName string
-var version string
+var appName = "imemo"
+var version = "1.2.0"
 
-func init() {
-	//config := GetConfig()
-	//appName = config.App.Name
-	//version = config.App.Version
-	appName = "imemo"
-	version = "1.2.0"
-}
-
+// GetApp method is for getting App settings.
 func GetApp() *cli.App {
 	app := cli.NewApp()
 	app.Name = appName
