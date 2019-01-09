@@ -6,6 +6,7 @@ import (
 	"strings"
 )
 
+// Data type is struct of one memo data.
 type Data struct {
 	Id   int
 	Text string
@@ -15,6 +16,7 @@ func (data *Data) String() string {
 	return strconv.Itoa(data.Id) + " " + data.Text + "\n"
 }
 
+// ConvertToData is function for getting strings expression of text.
 func ConvertToData(line string) (Data, error) {
 	var data Data
 	var err error

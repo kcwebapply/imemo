@@ -18,8 +18,7 @@ var fileName = "data.txt"
 //GetAllMemo shows all memodata
 func GetAllMemo(c *cli.Context) {
 	lines := readLines()
-	view.ViewAllMemo(lines)
-
+	view.PrintAllMemoMessage(lines)
 }
 
 // SaveMemo saves memodata
@@ -31,7 +30,7 @@ func SaveMemo(c *cli.Context) {
 		log.Fatal("error")
 	}
 	newData := saveMemo(paramFirst)
-	view.ViewSaveMemo(newData)
+	view.PrintSaveMessage(newData)
 }
 
 // DeleteMemo delete memodata
@@ -100,7 +99,7 @@ func deleteMemo(id int) {
 			writer.Flush()
 			counter++
 		} else {
-			view.ViewDeleteMemo(data)
+			view.PrintDeleteMessage(data)
 		}
 	}
 	writer.Write(([]byte)("\n"))

@@ -4,31 +4,31 @@ import (
 	"os"
 
 	"github.com/codegangsta/cli"
-	. "github.com/kcwebapply/imemo/app"
-	. "github.com/kcwebapply/imemo/commands"
+	app "github.com/kcwebapply/imemo/app"
+	commands "github.com/kcwebapply/imemo/commands"
 )
 
 func main() {
-	app := GetApp()
+	app := app.GetApp()
 	app.Commands = []cli.Command{
 		// コマンド設定
 		{
 			Name:    "all",
 			Aliases: []string{"a"},
 			Usage:   "メモ一覧を表示します。",
-			Action:  GetAllMemo,
+			Action:  commands.GetAllMemo,
 		},
 		{
 			Name:    "save",
 			Aliases: []string{"s"},
 			Usage:   "メモを保存します。",
-			Action:  SaveMemo,
+			Action:  commands.SaveMemo,
 		},
 		{
 			Name:    "delete",
 			Aliases: []string{"d"},
 			Usage:   "指定したidを持つメモを削除します。",
-			Action:  DeleteMemo,
+			Action:  commands.DeleteMemo,
 		},
 	}
 

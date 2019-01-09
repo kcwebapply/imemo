@@ -10,7 +10,8 @@ import (
 
 var dotLine = "----------------------------------------------------------------------------------"
 
-func ViewAllMemo(datas []data.Data) {
+// PrintAllMemoMessage is function of printing message when showing all memo.
+func PrintAllMemoMessage(datas []data.Data) {
 	fmt.Println(dotLine)
 
 	for _, data := range datas {
@@ -19,14 +20,16 @@ func ViewAllMemo(datas []data.Data) {
 	fmt.Println(dotLine + "\x1b[0m")
 }
 
-func ViewSaveMemo(data data.Data) {
+// PrintSaveMessage is function of printing message when saving memo.
+func PrintSaveMessage(data data.Data) {
 	fmt.Println(dotLine)
 	printBody(data)
 	fmt.Println(dotLine)
 	fmt.Println("\x1b[1;32mmemo saved!\x1b[0m")
 }
 
-func ViewDeleteMemo(data data.Data) {
+// PrintDeleteMessage is function of printing message when deleting memo.
+func PrintDeleteMessage(data data.Data) {
 	fmt.Println(dotLine)
 	printBody(data)
 	fmt.Println(dotLine)
