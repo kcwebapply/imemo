@@ -10,16 +10,16 @@ import (
 
 	"github.com/codegangsta/cli"
 	data "github.com/kcwebapply/imemo/data"
+	view "github.com/kcwebapply/imemo/view"
 )
 
-var fileName = "data.txt" //config.GetConfig().Sys.FileName
+var fileName = "data.txt"
 
 //GetAllMemo shows all memodata
 func GetAllMemo(c *cli.Context) {
 	lines := readLines()
-	for _, data := range lines {
-		fmt.Print(data.String())
-	}
+	view.ViewAllMemo(lines)
+
 }
 
 // SaveMemo saves memodata
@@ -30,7 +30,8 @@ func SaveMemo(c *cli.Context) {
 	} else {
 		log.Fatal("error")
 	}
-	saveMemo(paramFirst)
+	newData := saveMemo(paramFirst)
+	view.ViewSaveMemo(newData)
 }
 
 // DeleteMemo delete memodata
@@ -67,7 +68,7 @@ func readLines() []data.Data {
 	return lines
 }
 
-func saveMemo(text string) {
+func saveMemo(text string) data.Data {
 	lines := readLines()
 	writer := getFileCleanWriter()
 	defer writer.Flush()
@@ -83,8 +84,8 @@ func saveMemo(text string) {
 		lastCOUNTER = 1
 	}
 	newData := data.Data{Id: lastCOUNTER, Text: text}
-	fmt.Println("memo saved!")
 	writer.Write(([]byte)(newData.String()))
+	return newData
 }
 
 func deleteMemo(id int) {
@@ -98,9 +99,10 @@ func deleteMemo(id int) {
 			writer.Write(([]byte)(data.String()))
 			writer.Flush()
 			counter++
+		} else {
+			view.ViewDeleteMemo(data)
 		}
 	}
-
 	writer.Write(([]byte)("\n"))
 	writer.Flush()
 }
