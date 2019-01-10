@@ -11,23 +11,23 @@ import (
 func main() {
 	app := app.GetApp()
 	app.Commands = []cli.Command{
-		// コマンド設定
+		// Configuration for command
 		{
 			Name:    "all",
 			Aliases: []string{"a"},
-			Usage:   "メモ一覧を表示します。",
+			Usage:   "View saved memo.",
 			Action:  commands.GetAllMemo,
 		},
 		{
 			Name:    "save",
 			Aliases: []string{"s"},
-			Usage:   "メモを保存します。",
+			Usage:   "Save memo.",
 			Action:  commands.SaveMemo,
 		},
 		{
 			Name:    "delete",
 			Aliases: []string{"d"},
-			Usage:   "指定したidを持つメモを削除します。",
+			Usage:   "Delete memo that specified by id.",
 			Action:  commands.DeleteMemo,
 		},
 	}
