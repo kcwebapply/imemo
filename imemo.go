@@ -30,17 +30,20 @@ func main() {
 			Usage:   "Delete memo that specified by id.",
 			Action:  commands.DeleteMemo,
 		},
+
+		{
+			Name:    "edit",
+			Aliases: []string{"e"},
+			Usage:   "Edit memo that specified by id.",
+			Action:  commands.EditMemo,
+		},
 	}
 
 	app.Before = func(c *cli.Context) error {
-		// 開始前の処理をここに書く
-		//fmt.Println("開始")
-		return nil // error を返すと処理全体が終了
+		return nil
 	}
 
 	app.After = func(c *cli.Context) error {
-		// 終了時の処理をここに書く
-		//fmt.Println("終了")
 		return nil
 	}
 
