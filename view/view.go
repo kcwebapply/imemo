@@ -44,6 +44,11 @@ func PrintEditMessage(data data.Data) {
 	fmt.Println("\x1b[1;33mmemo edited!\x1b[0m")
 }
 
+// PrintClearMessage is function of printing message when clearing memo.
+func PrintClearMessage() {
+	fmt.Println("\x1b[1;36mclear memo!\x1b[0m")
+}
+
 func printBody(data data.Data) {
 	echo := ""
 	echo += "|"
