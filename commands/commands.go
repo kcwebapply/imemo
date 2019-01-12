@@ -156,9 +156,10 @@ func editMemo(id int, text string) {
 }
 
 func clearMemo() {
+	lines := readLines()
 	writer := getFileCleanWriter()
 	defer writer.Flush()
-	view.PrintClearMessage()
+	view.PrintClearMessage(len(lines))
 }
 
 func getFileCleanWriter() *bufio.Writer {
