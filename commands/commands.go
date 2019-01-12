@@ -24,25 +24,13 @@ func GetAllMemo(c *cli.Context) {
 
 // SaveMemo saves memodata
 func SaveMemo(c *cli.Context) {
-	var paramFirst = ""
-	if len(c.Args()) > 0 {
-		paramFirst = c.Args().First()
-	} else {
-		log.Fatal("error")
-	}
-	newData := saveMemo(paramFirst)
+	newData := saveMemo(c.Args().First())
 	view.PrintSaveMessage(newData)
 }
 
 // DeleteMemo delete memodata
 func DeleteMemo(c *cli.Context) {
-	var paramFirst = ""
-	if len(c.Args()) > 0 {
-		paramFirst = c.Args().First()
-	} else {
-		log.Fatal("error")
-	}
-	paramIntValue, err := strconv.Atoi(paramFirst)
+	paramIntValue, err := strconv.Atoi(c.Args().First())
 	if err != nil {
 		fmt.Println("argument error. first paramerter shouild be int-format")
 	}
@@ -51,13 +39,7 @@ func DeleteMemo(c *cli.Context) {
 
 // EditMemo edit memodata
 func EditMemo(c *cli.Context) {
-	var paramFirst = ""
-	if len(c.Args()) > 0 {
-		paramFirst = c.Args().First()
-	} else {
-		log.Fatal("argument error. please input memo id.")
-	}
-	paramIntValue, err := strconv.Atoi(paramFirst)
+	paramIntValue, err := strconv.Atoi(c.Args().First())
 	if err != nil {
 		fmt.Println("argument error. first paramerter shouild be int-format")
 	}
