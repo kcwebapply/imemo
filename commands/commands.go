@@ -69,6 +69,11 @@ func EditMemo(c *cli.Context) {
 	editMemo(paramIntValue, text)
 }
 
+// ClearMemo delete all memo data
+func ClearMemo(c *cli.Context) {
+	clearMemo()
+}
+
 func readLines() []data.Data {
 	var lines = []data.Data{}
 
@@ -148,6 +153,13 @@ func editMemo(id int, text string) {
 	}
 	writer.Write(([]byte)("\n"))
 	writer.Flush()
+}
+
+func clearMemo() {
+	lines := readLines()
+	writer := getFileCleanWriter()
+	defer writer.Flush()
+	view.PrintClearMessage(len(lines))
 }
 
 func getFileCleanWriter() *bufio.Writer {

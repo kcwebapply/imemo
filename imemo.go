@@ -37,6 +37,13 @@ func main() {
 			Usage:   "Edit memo that specified by id.",
 			Action:  commands.EditMemo,
 		},
+
+		{
+			Name:    "clear",
+			Aliases: []string{"c"},
+			Usage:   "clear (delete) all memo data.",
+			Action:  commands.ClearMemo,
+		},
 	}
 
 	app.Before = func(c *cli.Context) error {
