@@ -2,6 +2,7 @@ package commands
 
 import (
 	"bufio"
+	"errors"
 	"fmt"
 	"log"
 	"os"
@@ -46,6 +47,26 @@ func DeleteMemo(c *cli.Context) {
 		fmt.Println("argument error. first paramerter shouild be int-format")
 	}
 	deleteMemo(paramIntValue)
+}
+
+// EditMemo edit memodata
+func EditMemo(c *cli.Context) {
+	var paramFirst = ""
+	if len(c.Args()) > 0 {
+		paramFirst = c.Args().First()
+	} else {
+		log.Fatal("argument error. please input memo id.")
+	}
+	paramIntValue, err := strconv.Atoi(paramFirst)
+	if err != nil {
+		fmt.Println("argument error. first paramerter shouild be int-format")
+	}
+
+	text, err := getTerminalInput()
+	if err != nil {
+		log.Fatal(err.Error())
+	}
+	editMemo(paramIntValue, text)
 }
 
 func readLines() []data.Data {
@@ -106,6 +127,29 @@ func deleteMemo(id int) {
 	writer.Flush()
 }
 
+func editMemo(id int, text string) {
+	lines := readLines()
+	writer := getFileCleanWriter()
+	defer writer.Flush()
+	counter := 1
+	for _, data := range lines {
+		if id != data.Id {
+			data.Id = counter
+			writer.Write(([]byte)(data.String()))
+			writer.Flush()
+			counter++
+		} else {
+			data.Id = counter
+			data.Text = text
+			writer.Write(([]byte)(data.String()))
+			counter++
+			view.PrintEditMessage(data)
+		}
+	}
+	writer.Write(([]byte)("\n"))
+	writer.Flush()
+}
+
 func getFileCleanWriter() *bufio.Writer {
 	writeFile, err := os.OpenFile(fileName, os.O_TRUNC|os.O_WRONLY|os.O_CREATE, 0644)
 	if err != nil {
@@ -118,8 +162,8 @@ func getFileCleanWriter() *bufio.Writer {
 func sortAndDeleteDuplication(datas []data.Data) []data.Data {
 	dataSets := []data.Data{}
 	idSets := make(map[int]struct{})
+
 	for _, data := range datas {
-		//idSets[data.Id] = struct{}{}
 		if _, ok := idSets[data.Id]; !ok {
 			idSets[data.Id] = struct{}{}
 			dataSets = append(dataSets, data)
@@ -130,4 +174,15 @@ func sortAndDeleteDuplication(datas []data.Data) []data.Data {
 		return dataSets[i].Id < dataSets[j].Id
 	})
 	return dataSets
+}
+
+func getTerminalInput() (string, error) {
+	var err error
+	fmt.Print(">> ")
+	scanner := bufio.NewScanner(os.Stdin)
+	scanned := scanner.Scan()
+	if !scanned {
+		err = errors.New("get input error")
+	}
+	return scanner.Text(), err
 }

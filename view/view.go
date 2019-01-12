@@ -36,6 +36,14 @@ func PrintDeleteMessage(data data.Data) {
 	fmt.Println("\x1b[1;36mmemo deleted!\x1b[0m")
 }
 
+// PrintEditMessage is function of printing message when editing memo.
+func PrintEditMessage(data data.Data) {
+	fmt.Println(dotLine)
+	printBody(data)
+	fmt.Println(dotLine)
+	fmt.Println("\x1b[1;33mmemo edited!\x1b[0m")
+}
+
 func printBody(data data.Data) {
 	echo := ""
 	echo += "|"
