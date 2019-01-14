@@ -2,19 +2,20 @@ package commands
 
 import (
 	"bufio"
-	"errors"
 	"fmt"
-	"log"
 	"os"
 	"sort"
 	"strconv"
 
 	"github.com/codegangsta/cli"
 	data "github.com/kcwebapply/imemo/data"
+	util "github.com/kcwebapply/imemo/util"
 	view "github.com/kcwebapply/imemo/view"
 )
 
 var fileName = "data.txt"
+
+var maxTextSize = 60
 
 //GetAllMemo shows all memodata
 func GetAllMemo(c *cli.Context) {
@@ -24,7 +25,13 @@ func GetAllMemo(c *cli.Context) {
 
 // SaveMemo saves memodata
 func SaveMemo(c *cli.Context) {
+	text := c.Args().First()
+	if util.TextCounter(text) > maxTextSize {
+		fmt.Printf("argument error. text size should be under %d.\n", maxTextSize)
+		os.Exit(0)
+	}
 	newData := saveMemo(c.Args().First())
+
 	view.PrintSaveMessage(newData)
 }
 
@@ -32,7 +39,8 @@ func SaveMemo(c *cli.Context) {
 func DeleteMemo(c *cli.Context) {
 	paramIntValue, err := strconv.Atoi(c.Args().First())
 	if err != nil {
-		fmt.Println("argument error. first paramerter shouild be int-format")
+		fmt.Println("argument error. first paramerter should be int-format")
+		os.Exit(0)
 	}
 	deleteMemo(paramIntValue)
 }
@@ -41,12 +49,18 @@ func DeleteMemo(c *cli.Context) {
 func EditMemo(c *cli.Context) {
 	paramIntValue, err := strconv.Atoi(c.Args().First())
 	if err != nil {
-		fmt.Println("argument error. first paramerter shouild be int-format")
+		fmt.Println("argument error. first paramerter should be int-format")
 	}
 
-	text, err := getTerminalInput()
+	text, err := util.GetTerminalInput()
 	if err != nil {
-		log.Fatal(err.Error())
+		fmt.Println("input error happened.")
+		os.Exit(0)
+	}
+
+	if util.TextCounter(text) > maxTextSize {
+		fmt.Printf("argument error. text size should be under %d.\n", maxTextSize)
+		os.Exit(0)
 	}
 	editMemo(paramIntValue, text)
 }
@@ -168,15 +182,4 @@ func sortAndDeleteDuplication(datas []data.Data) []data.Data {
 		return dataSets[i].Id < dataSets[j].Id
 	})
 	return dataSets
-}
-
-func getTerminalInput() (string, error) {
-	var err error
-	fmt.Print(">> ")
-	scanner := bufio.NewScanner(os.Stdin)
-	scanned := scanner.Scan()
-	if !scanned {
-		err = errors.New("get input error")
-	}
-	return scanner.Text(), err
 }

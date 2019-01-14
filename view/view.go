@@ -6,9 +6,10 @@ import (
 	"strings"
 
 	data "github.com/kcwebapply/imemo/data"
+	util "github.com/kcwebapply/imemo/util"
 )
 
-var dotLine = "----------------------------------------------------------------------------------"
+var dotLine = "------------------------------------------------------------------------------------------"
 
 // PrintAllMemoMessage is function of printing message when showing all memo.
 func PrintAllMemoMessage(datas []data.Data) {
@@ -60,25 +61,9 @@ func printBody(data data.Data) {
 	echo += strconv.Itoa(data.Id)
 	echo += "| "
 	echo += data.Text
-	textLength := textCounter(echo)
+	textLength := util.TextCounter(echo)
 	space := len(dotLine) - textLength - 1
 	echo += strings.Repeat(" ", space)
 	echo += "|"
 	fmt.Println(echo)
-}
-
-func textCounter(text string) int {
-	textCounter := 0
-	befPos := 0
-	for pos, _ := range text {
-		// this check is where character is Japanase or not.
-		if pos-befPos == 3 {
-			textCounter += 2 // to treat japanese character as 2byte.
-			befPos = pos
-		} else {
-			textCounter += 1
-			befPos = pos
-		}
-	}
-	return textCounter
 }
