@@ -26,7 +26,8 @@ func PrintSaveMessage(data data.Data) {
 	fmt.Println(dotLine)
 	printBody(data)
 	fmt.Println(dotLine)
-	fmt.Println("\x1b[1;32mmemo saved!\x1b[0m")
+	//fmt.Println("\x1b[1;94mmemo saved!\x1b[0m")
+	fmt.Println("\x1b[1m\x1b[38;5;39mmemo saved!\x1b[0m")
 }
 
 // PrintDeleteMessage is function of printing message when deleting memo.
@@ -34,7 +35,8 @@ func PrintDeleteMessage(data data.Data) {
 	fmt.Println(dotLine)
 	printBody(data)
 	fmt.Println(dotLine)
-	fmt.Println("\x1b[1;36mmemo deleted!\x1b[0m")
+	//fmt.Println("\x1b[1;36mmemo deleted!\x1b[0m")
+	fmt.Println("\x1b[1m\x1b[38;5;211mmemo deleted!\x1b[0m")
 }
 
 // PrintEditMessage is function of printing message when editing memo.
@@ -42,7 +44,8 @@ func PrintEditMessage(data data.Data) {
 	fmt.Println(dotLine)
 	printBody(data)
 	fmt.Println(dotLine)
-	fmt.Println("\x1b[1;33mmemo edited!\x1b[0m")
+	//fmt.Println("\x1b[1;33;21mmemo edited!\x1b[0m")
+	fmt.Println("\x1b[1m\x1b[38;5;214mmemo edited!\x1b[0m")
 }
 
 // PrintClearMessage is function of printing message when clearing memo.
