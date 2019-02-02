@@ -1,12 +1,12 @@
 # imemo
-<img  align="right" src="image/imemo.png" width="50px">
+<img  align="right" src="image/imemo.png" width="100px">
 
 [![GoDoc](https://godoc.org/github.com/kcwebapply/imemo?status.svg)](https://godoc.org/github.com/kcwebapply/imemo)
 ![Go Report Card](https://goreportcard.com/badge/github.com/kcwebapply/imemo)
 [](https://github.com/gin-gonic/gin/releases)
 [![Release](https://img.shields.io/github/release/kcwebapply/imemo.svg?style=flat-square)](https://github.com/kcwebapply/iemo/release)
 
-`imemo` is simple  memo tool for terminal.
+`imemo` is very simple `memo` tool for terminal.
 
 ![sample-demo](image/imemo.gif)
 
