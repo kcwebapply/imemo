@@ -11,11 +11,17 @@ import (
 	data "github.com/kcwebapply/imemo/data"
 	util "github.com/kcwebapply/imemo/util"
 	view "github.com/kcwebapply/imemo/view"
+	homedir "github.com/mitchellh/go-homedir"
 )
 
-var fileName = "data.txt"
+var fileName = ""
 
 var maxTextSize = 60
+
+func init() {
+	filePath, _ := homedir.Dir()
+	fileName = fmt.Sprintf("%s/%s", filePath, "data.txt")
+}
 
 //GetAllMemo shows all memodata
 func GetAllMemo(c *cli.Context) {
