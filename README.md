@@ -8,7 +8,7 @@
 
 `imemo` is very simple `memo` tool for terminal.
 
-![sample-demo](image/imemo.gif)
+![sample-demo](https://imgur.com/56c9MuR.gif)
 
 ## Installation
 
@@ -23,6 +23,7 @@ brew install imemo
 
 ### show memo list
 listing all memo. `imemo a` also available.
+
 ```
 > imemo all 
 ----------------------------------------------------------------------------------
@@ -33,7 +34,11 @@ listing all memo. `imemo a` also available.
 
 ### save new memo
 please input what you want to write on memo.
+
+![sample-demo](https://imgur.com/whWhi0X.gif)
+
 `imemo s` also available.
+
 ```
 > imemo save "meeting at 13:30"
 ----------------------------------------------------------------------------------
@@ -45,6 +50,8 @@ memo saved!
 ## delete memo
 please input memo's Id which you want to delete.
 
+![sample-demo](https://imgur.com/ekB0A1M.gif)
+
 ```
 > imemo d 2
 ----------------------------------------------------------------------------------
@@ -52,4 +59,27 @@ please input memo's Id which you want to delete.
 ----------------------------------------------------------------------------------
 memo deleted!
 ```
+
+## edit memo
+`imemo edit` edit memo data.
+
+![sample-demo](https://imgur.com/56AxBqS.gif)
+
+```
+> imemo e 
+>> xxx  // input new memo.
+memo edited!
+```
+
+## clear memo
+`imemo clear` delete all memo data.
+
+![sample-demo](https://imgur.com/NvdI1Mi.gif)
+
+```
+> imemo clear
+clear 2 memo !
+```
+
+
 
