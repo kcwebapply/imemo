@@ -5,18 +5,28 @@ import (
 	"strconv"
 	"strings"
 
-	data "github.com/kcwebapply/imemo/data"
+	"github.com/kcwebapply/imemo/data"
+	"github.com/kcwebapply/imemo/domain/model"
 	util "github.com/kcwebapply/imemo/util"
 )
 
 var dotLine = "------------------------------------------------------------------------------------------"
 
 // PrintAllMemoMessage is function of printing message when showing all memo.
-func PrintAllMemoMessage(datas []data.Data) {
+/*func PrintAllMemoMessage(datas []data.Data) {
 	fmt.Println(dotLine)
 
 	for _, data := range datas {
 		printBody(data)
+	}
+	fmt.Println(dotLine + "\x1b[0m")
+}*/
+
+func PrintAllMemo(memos []model.Memo) {
+	fmt.Println(dotLine)
+
+	for _, memo := range memos {
+		printBody(memo)
 	}
 	fmt.Println(dotLine + "\x1b[0m")
 }
@@ -24,7 +34,7 @@ func PrintAllMemoMessage(datas []data.Data) {
 // PrintSaveMessage is function of printing message when saving memo.
 func PrintSaveMessage(data data.Data) {
 	fmt.Println(dotLine)
-	printBody(data)
+	//printBody(data)
 	fmt.Println(dotLine)
 	//fmt.Println("\x1b[1;94mmemo saved!\x1b[0m")
 	fmt.Println("\x1b[1m\x1b[38;5;39mmemo saved!\x1b[0m")
@@ -33,7 +43,7 @@ func PrintSaveMessage(data data.Data) {
 // PrintDeleteMessage is function of printing message when deleting memo.
 func PrintDeleteMessage(data data.Data) {
 	fmt.Println(dotLine)
-	printBody(data)
+	//printBody(data)
 	fmt.Println(dotLine)
 	//fmt.Println("\x1b[1;36mmemo deleted!\x1b[0m")
 	fmt.Println("\x1b[1m\x1b[38;5;211mmemo deleted!\x1b[0m")
@@ -42,7 +52,7 @@ func PrintDeleteMessage(data data.Data) {
 // PrintEditMessage is function of printing message when editing memo.
 func PrintEditMessage(data data.Data) {
 	fmt.Println(dotLine)
-	printBody(data)
+	//printBody(data)
 	fmt.Println(dotLine)
 	//fmt.Println("\x1b[1;33;21mmemo edited!\x1b[0m")
 	fmt.Println("\x1b[1m\x1b[38;5;214mmemo edited!\x1b[0m")
@@ -54,16 +64,16 @@ func PrintClearMessage(size int) {
 	fmt.Println(message)
 }
 
-func printBody(data data.Data) {
+func printBody(memo model.Memo) {
 	echo := ""
 	echo += "|"
-	if data.Id < 10 {
+	if memo.ID < 10 {
 		echo += " "
 	}
 
-	echo += strconv.Itoa(data.Id)
+	echo += strconv.Itoa(memo.ID)
 	echo += "| "
-	echo += data.Text
+	echo += memo.Memo
 	textLength := util.TextCounter(echo)
 	space := len(dotLine) - textLength - 1
 	echo += strings.Repeat(" ", space)

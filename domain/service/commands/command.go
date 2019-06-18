@@ -11,22 +11,46 @@ import (
 	data "github.com/kcwebapply/imemo/data"
 	util "github.com/kcwebapply/imemo/util"
 	view "github.com/kcwebapply/imemo/view"
-	homedir "github.com/mitchellh/go-homedir"
 )
 
 var fileName = ""
 
 var maxTextSize = 60
 
-func init() {
-	filePath, _ := homedir.Dir()
-	fileName = fmt.Sprintf("%s/%s", filePath, "data.txt")
-}
-
-//GetAllMemo shows all memodata
-func GetAllMemo(c *cli.Context) {
-	lines := readLines()
-	view.PrintAllMemoMessage(lines)
+func GetCommandMap() []cli.Command {
+	var commands = []cli.Command{
+		{
+			Name:    "all",
+			Aliases: []string{"a"},
+			Usage:   "View saved memo.",
+			Action:  Ls,
+		},
+		{
+			Name:    "save",
+			Aliases: []string{"s"},
+			Usage:   "Save memo.",
+			Action:  SaveMemo,
+		},
+		{
+			Name:    "delete",
+			Aliases: []string{"d"},
+			Usage:   "Delete memo that specified by id.",
+			Action:  DeleteMemo,
+		},
+		{
+			Name:    "edit",
+			Aliases: []string{"e"},
+			Usage:   "Edit memo that specified by id.",
+			Action:  EditMemo,
+		},
+		{
+			Name:    "clear",
+			Aliases: []string{"c"},
+			Usage:   "clear (delete) all memo data.",
+			Action:  ClearMemo,
+		},
+	}
+	return commands
 }
 
 // SaveMemo saves memodata
