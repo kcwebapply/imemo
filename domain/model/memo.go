@@ -4,6 +4,6 @@ package model
 // ID is primary key and text is actual memo text. category is id of category.
 type Memo struct {
 	ID       int
-	Memo     string
-	Category int
+	text     string
+	category int
 }
