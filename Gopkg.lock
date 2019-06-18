@@ -10,6 +10,33 @@
   version = "v1.20.0"
 
 [[projects]]
+  digest = "1:2f99776ce3e90e6aa852cb6a92c551f5017142d897e34f832a0a1c08c6602949"
+  name = "github.com/gocraft/dbr"
+  packages = [
+    ".",
+    "dialect",
+  ]
+  pruneopts = "UT"
+  revision = "042fe86dc2daa9684f746ab337971e84147e8856"
+  version = "v2.4"
+
+[[projects]]
+  digest = "1:5a0216e4802a793066f9d39aec3854323da516cc519e39080d31225484aa8b6a"
+  name = "github.com/kcwebapply/bm"
+  packages = ["util"]
+  pruneopts = "UT"
+  revision = "3a8ba775099bc238b06b71d3e48ab072b8b231d2"
+  version = "1.0.0"
+
+[[projects]]
+  digest = "1:4a49346ca45376a2bba679ca0e83bec949d780d4e927931317904bad482943ec"
+  name = "github.com/mattn/go-sqlite3"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "c7c4067b79cc51e6dfdcef5c702e74b1e0fa7c75"
+  version = "v1.10.0"
+
+[[projects]]
   digest = "1:5d231480e1c64a726869bc4142d270184c419749d34f167646baa21008eb0a79"
   name = "github.com/mitchellh/go-homedir"
   packages = ["."]
@@ -22,6 +49,9 @@
   analyzer-version = 1
   input-imports = [
     "github.com/codegangsta/cli",
+    "github.com/gocraft/dbr",
+    "github.com/kcwebapply/bm/util",
+    "github.com/mattn/go-sqlite3",
     "github.com/mitchellh/go-homedir",
   ]
   solver-name = "gps-cdcl"
