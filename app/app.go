@@ -5,7 +5,7 @@ import (
 	"os"
 
 	"github.com/codegangsta/cli"
-	"github.com/kcwebapply/imemo/commands"
+	"github.com/kcwebapply/imemo/domain/service/commands"
 	validator "github.com/kcwebapply/imemo/validator"
 )
 
@@ -27,38 +27,7 @@ func InitApp() *cli.App {
 		},
 	}
 	// command routing.
-	app.Commands = []cli.Command{
-		{
-			Name:    "all",
-			Aliases: []string{"a"},
-			Usage:   "View saved memo.",
-			Action:  commands.GetAllMemo,
-		},
-		{
-			Name:    "save",
-			Aliases: []string{"s"},
-			Usage:   "Save memo.",
-			Action:  commands.SaveMemo,
-		},
-		{
-			Name:    "delete",
-			Aliases: []string{"d"},
-			Usage:   "Delete memo that specified by id.",
-			Action:  commands.DeleteMemo,
-		},
-		{
-			Name:    "edit",
-			Aliases: []string{"e"},
-			Usage:   "Edit memo that specified by id.",
-			Action:  commands.EditMemo,
-		},
-		{
-			Name:    "clear",
-			Aliases: []string{"c"},
-			Usage:   "clear (delete) all memo data.",
-			Action:  commands.ClearMemo,
-		},
-	}
+	app.Commands = commands.GetCommandMap()
 	// command validator registration
 	app.Before = func(c *cli.Context) error {
 		err := validator.ValidateArgument(c)
