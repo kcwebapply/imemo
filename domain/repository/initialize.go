@@ -2,7 +2,7 @@ package repository
 
 import (
 	"github.com/gocraft/dbr"
-	"github.com/kcwebapply/bm/infrastructure/db"
+	"github.com/kcwebapply/imemo/infrastructure/db"
 )
 
 var conn *dbr.Connection
