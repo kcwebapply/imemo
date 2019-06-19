@@ -3,29 +3,12 @@ package repository
 import (
 	"fmt"
 
-	"github.com/gocraft/dbr"
 	"github.com/kcwebapply/imemo/domain/model"
-
-	"github.com/kcwebapply/imemo/infrastructure/db"
 )
-
-var conn *dbr.Connection
-var sess *dbr.Session
-
-func init() {
-	conn = db.GetConnection()
-	sess = conn.NewSession(nil)
-	CreateMemoTable()
-	CreateCategoryTable()
-}
 
 //CreateMemoTable create page table on sqlite3 db
 func CreateMemoTable() {
 	_, _ = sess.Exec("create table memo(id INTEGER PRIMARY KEY AUTOINCREMENT, memo TEXT, categoryid INTEGER);")
-}
-
-func CreateCategoryTable() {
-	_, _ = sess.Exec("create table category(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT);")
 }
 
 // Get memos return all memodata.
@@ -37,7 +20,7 @@ func GetMemos() ([]model.Memo, error) {
 
 func AddMemo(memo model.Memo) error {
 	//.Columns("url", "title", "tags", "content").Record(newPage).Exec()
-	_, err := sess.InsertInto("memo").Columns("id", "memo", "categoryid").Record(memo).Exec()
+	_, err := sess.InsertInto("memo").Columns("memo", "categoryid").Record(memo).Exec()
 	return err
 }
 
