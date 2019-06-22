@@ -12,11 +12,50 @@ import (
 func Ls(c *cli.Context) {
 	var memolist []model.Memo
 
-	memolist, err := repository.GetMemos()
+	var err error
+
+	memolist, err = repository.GetMemos()
 
 	if err != nil {
 		fmt.Printf("db error! %s\n", err.Error())
 	}
 
-	view.PrintAllMemo(memolist)
+	categoryList, err := repository.GetCategories()
+
+	if err != nil {
+		fmt.Printf("db error! %s\n", err.Error())
+	}
+
+	memoCategoryMap := clustringByCategory(memolist)
+	categoryIDMap := mapCategoryWithId(categoryList)
+	view.PrintAllMemos(memoCategoryMap, categoryIDMap)
+}
+
+func clustringByCategory(memolist []model.Memo) map[int][]model.Memo {
+	var memoCategoryMap = map[int][]model.Memo{}
+
+	for _, memo := range memolist {
+		// get categoryId
+		memosCategoryID := memo.Categoryid
+		// get all memolist thah have same category id
+		var memolistByCategory, containCheck = memoCategoryMap[memosCategoryID]
+		// if no memolist found yet, then mapping new hashmap
+		if !containCheck {
+			memolistByCategory = []model.Memo{}
+		}
+
+		memoCategoryMap[memosCategoryID] = append(memolistByCategory, memo)
+	}
+
+	return memoCategoryMap
+}
+
+func mapCategoryWithId(categoryList []model.Category) map[int]model.Category {
+	var categoryIDMap = map[int]model.Category{}
+
+	for _, category := range categoryList {
+		categoryIDMap[category.ID] = category
+	}
+
+	return categoryIDMap
 }

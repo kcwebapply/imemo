@@ -20,16 +20,16 @@ var maxTextSize = 60
 func GetCommandMap() []cli.Command {
 	var commands = []cli.Command{
 		{
-			Name:    "all",
-			Aliases: []string{"a"},
-			Usage:   "View saved memo.",
+			Name:    "ls",
+			Aliases: []string{},
+			Usage:   "list memo. ",
 			Action:  Ls,
 		},
 		{
-			Name:    "save",
-			Aliases: []string{"s"},
+			Name:    "add",
+			Aliases: []string{"add"},
 			Usage:   "Save memo.",
-			Action:  SaveMemo,
+			Action:  Add,
 		},
 		{
 			Name:    "delete",
@@ -51,18 +51,6 @@ func GetCommandMap() []cli.Command {
 		},
 	}
 	return commands
-}
-
-// SaveMemo saves memodata
-func SaveMemo(c *cli.Context) {
-	text := c.Args().First()
-	if util.TextCounter(text) > maxTextSize {
-		fmt.Printf("argument error. text size should be under %d.\n", maxTextSize)
-		os.Exit(0)
-	}
-	newData := saveMemo(c.Args().First())
-
-	view.PrintSaveMessage(newData)
 }
 
 // DeleteMemo delete memodata

@@ -4,5 +4,5 @@ package model
 // this struct has only category name.
 type Category struct {
 	ID   int
-	name string
+	Name string
 }

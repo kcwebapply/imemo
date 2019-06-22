@@ -11,6 +11,7 @@ var sess *dbr.Session
 func init() {
 	conn = db.GetConnection()
 	sess = conn.NewSession(nil)
+	CreateMemoTable()
 	CreateCategoryTable()
-	CreateCategoryTable()
+	InsertDefaultCategory()
 }
