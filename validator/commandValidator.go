@@ -1,9 +1,6 @@
 package validator
 
 import (
-	"errors"
-	"fmt"
-
 	"github.com/codegangsta/cli"
 )
 
@@ -25,7 +22,7 @@ func init() {
 // ValidateArgument validate command args.
 func ValidateArgument(c *cli.Context) error {
 	var err error
-	commandName := c.Args().Get(0)
+	/*commandName := c.Args().Get(0)
 	inputArgumentsSize := len(c.Args())
 	correctSize, exists := argumentSizeMap[commandName]
 
@@ -37,6 +34,6 @@ func ValidateArgument(c *cli.Context) error {
 	if inputArgumentsSize != correctSize {
 		message := fmt.Sprintf("arguments size error.")
 		err = errors.New(message)
-	}
+	}*/
 	return err
 }
