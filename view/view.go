@@ -22,16 +22,17 @@ func PrintAllMemo(memos []model.Memo) {
 }
 
 func PrintAllMemos(memoMapByCategory map[int][]model.Memo, categoryIDMap map[int]model.Category) {
-
+	fmt.Println("")
 	// loop for each category
 	for categoryID, memolist := range memoMapByCategory {
 		category := categoryIDMap[categoryID]
-		fmt.Printf("\x1b[38;5;204m[ %s ]\n\x1b[0m", category.Name)
+		//fmt.Printf("\x1b[1m\x1b[38;5;204m%s\n\x1b[0m", category.Name)
+		fmt.Printf("\x1b[1m\x1b[38;5;162m%s\n\x1b[0m", category.Name)
 		fmt.Println(dotLine)
 		for _, memo := range memolist {
 			printBody(memo)
 		}
-		fmt.Println(dotLine + "\x1b[0m")
+		fmt.Println(dotLine + "\x1b[0m\n")
 
 	}
 
@@ -40,18 +41,18 @@ func PrintAllMemos(memoMapByCategory map[int][]model.Memo, categoryIDMap map[int
 // PrintSaveMessage is function of printing message when saving memo.
 func PrintAddMemo(memo model.Memo) {
 	//fmt.Println("\x1b[1;94mmemo saved!\x1b[0m")
-	fmt.Printf("\x1b[38;5;081m>> %s\n", memo.Memo)
-	fmt.Println("\x1b[0mmemo saved!")
+	fmt.Printf(">> %s\n", memo.Memo)
+	fmt.Println("\x1b[1m\x1b[38;5;075mmemo saved!\x1b[0m")
 }
 
 func PrintDeleteMemo(memo model.Memo) {
 	//fmt.Println("\x1b[1;94mmemo saved!\x1b[0m")
-	fmt.Printf("\x1b[38;5;173m>> %s\n", memo.Memo)
-	fmt.Println("\x1b[0mmemo deleted!")
+	fmt.Printf(">> %s\n", memo.Memo)
+	fmt.Println("\x1b[1m\x1b[38;5;223mmemo erased!\x1b[0m")
 }
 
-func PrintClearMemo(memo model.Memo) {
-	fmt.Println("\x1b[0m all memo deleted!")
+func PrintClearMemo() {
+	fmt.Println("\x1b[1m\x1b[38;5;086mall memo erased!\x1b[0m")
 }
 
 func printBody(memo model.Memo) {
