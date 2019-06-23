@@ -18,6 +18,12 @@ func GetMemos() ([]model.Memo, error) {
 	return rows, err
 }
 
+func GetMemo(id int) (model.Memo, error) {
+	var row model.Memo
+	_, err := sess.Select("*").From("memo").Where("id = ?", id).Load(&row)
+	return row, err
+}
+
 func AddMemo(memo model.Memo) error {
 	//.Columns("url", "title", "tags", "content").Record(newPage).Exec()
 	_, err := sess.InsertInto("memo").Columns("memo", "categoryid").Record(memo).Exec()

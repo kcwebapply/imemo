@@ -32,10 +32,10 @@ func GetCommandMap() []cli.Command {
 			Action:  Add,
 		},
 		{
-			Name:    "delete",
-			Aliases: []string{"d"},
+			Name:    "rm",
+			Aliases: []string{"r"},
 			Usage:   "Delete memo that specified by id.",
-			Action:  DeleteMemo,
+			Action:  Rm,
 		},
 		{
 			Name:    "edit",
@@ -51,16 +51,6 @@ func GetCommandMap() []cli.Command {
 		},
 	}
 	return commands
-}
-
-// DeleteMemo delete memodata
-func DeleteMemo(c *cli.Context) {
-	paramIntValue, err := strconv.Atoi(c.Args().First())
-	if err != nil {
-		fmt.Println("argument error. first paramerter should be int-format")
-		os.Exit(0)
-	}
-	deleteMemo(paramIntValue)
 }
 
 // EditMemo edit memodata
@@ -125,25 +115,6 @@ func saveMemo(text string) data.Data {
 	newData := data.Data{Id: lastCOUNTER, Text: text}
 	writer.Write(([]byte)(newData.String()))
 	return newData
-}
-
-func deleteMemo(id int) {
-	lines := readLines()
-	writer := getFileCleanWriter()
-	defer writer.Flush()
-	counter := 1
-	for _, data := range lines {
-		if id != data.Id {
-			data.Id = counter
-			writer.Write(([]byte)(data.String()))
-			writer.Flush()
-			counter++
-		} else {
-			view.PrintDeleteMessage(data)
-		}
-	}
-	writer.Write(([]byte)("\n"))
-	writer.Flush()
 }
 
 func editMemo(id int, text string) {
