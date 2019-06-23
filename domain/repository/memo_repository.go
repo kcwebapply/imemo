@@ -36,6 +36,12 @@ func DeleteMemoById(id int) error {
 	return err
 }
 
+// DeleteMemoById
+func DeleteAllMemo() error {
+	_, err := sess.DeleteFrom("memo").Exec()
+	return err
+}
+
 // GetMemosByCategoryName returns page grepped title by input word.
 func GetMemosByCategoryName(name string) ([]model.Category, error) {
 	var rows []model.Category
@@ -50,33 +56,3 @@ func GetMemosByCategoryId(id int) ([]model.Category, error) {
 	_, err := sess.Select("*").From("category").Where("id = ?", id).Load(&rows)
 	return rows, err
 }
-
-//GetPagesByTag returns page entities grepped by input tag word.
-/*func GetPagesByTag(tag string) ([]model.Page, error) {
-	var rows []model.Page
-	likeItem := fmt.Sprintf("%%%s%%", tag)
-	_, err := sess.Select("*").From("page").Where("tags like ?", likeItem).Load(&rows)
-	return rows, err
-}
-
-// GetPagesByContentSearch returns page entities grepped by html-content-search.
-func GetPagesByContentSearch(word string) ([]model.Page, error) {
-	var rows []model.Page
-	likeItem := fmt.Sprintf("%%%s%%", word)
-	_, err := sess.Select("*").From("page").Where("content like ?", likeItem).Load(&rows)
-	return rows, err
-}
-
-// AddPage saved bookrmark user input.
-func AddPage(newPage model.Page) error {
-	_, err := sess.InsertInto("page").Columns("url", "title", "tags", "content").Record(newPage).Exec()
-	return err
-}
-
-// RemovePage remove bookmark
-func RemovePage(id string) error {
-	if _, err := sess.DeleteFrom("page").Where("id = ?", id).Exec(); err != nil {
-		return err
-	}
-	return nil
-}*/

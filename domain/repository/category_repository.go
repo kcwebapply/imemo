@@ -9,7 +9,7 @@ func CreateCategoryTable() {
 }
 
 func InsertDefaultCategory() {
-	var category = model.Category{ID: 1, Name: ""}
+	var category = model.Category{ID: 1, Name: "default"}
 	sess.InsertInto("category").Columns("id", "name").Record(category).Exec()
 
 }
@@ -38,5 +38,11 @@ func AddCategory(category model.Category) error {
 // DeleteCategory
 func DeleteCategoryById(id int) error {
 	_, err := sess.DeleteFrom("category").Where("id = ?", id).Exec()
+	return err
+}
+
+// DeleteCategory
+func DeleteAllCategory() error {
+	_, err := sess.DeleteFrom("category").Exec()
 	return err
 }
