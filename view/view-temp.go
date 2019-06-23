@@ -43,6 +43,12 @@ func PrintAddMemo(memo model.Memo) {
 	fmt.Println("\x1b[0mmemo saved!")
 }
 
+func PrintDeleteMemo(memo model.Memo) {
+	//fmt.Println("\x1b[1;94mmemo saved!\x1b[0m")
+	fmt.Printf("\x1b[38;5;39m>> %s\n", memo.Memo)
+	fmt.Println("\x1b[0mmemo deleted!")
+}
+
 func printBody(memo model.Memo) {
 	echo := ""
 	echo += "|"

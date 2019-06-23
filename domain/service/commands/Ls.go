@@ -1,11 +1,10 @@
 package commands
 
 import (
-	"fmt"
-
 	"github.com/codegangsta/cli"
 	"github.com/kcwebapply/imemo/domain/model"
 	"github.com/kcwebapply/imemo/domain/repository"
+	"github.com/kcwebapply/imemo/util"
 	"github.com/kcwebapply/imemo/view"
 )
 
@@ -17,13 +16,13 @@ func Ls(c *cli.Context) {
 	memolist, err = repository.GetMemos()
 
 	if err != nil {
-		fmt.Printf("db error! %s\n", err.Error())
+		util.HandleError(err)
 	}
 
 	categoryList, err := repository.GetCategories()
 
 	if err != nil {
-		fmt.Printf("db error! %s\n", err.Error())
+		util.HandleError(err)
 	}
 
 	memoCategoryMap := clustringByCategory(memolist)
