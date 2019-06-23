@@ -52,7 +52,7 @@ func PrintDeleteMemo(memo model.Memo) {
 }
 
 func PrintClearMemo() {
-	fmt.Println("\x1b[1m\x1b[38;5;223m all memo erased!")
+	fmt.Println("\x1b[1m\x1b[38;5;086mall memo erased!\x1b[0m")
 }
 
 func printBody(memo model.Memo) {
