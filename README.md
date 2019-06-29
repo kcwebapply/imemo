@@ -1,5 +1,5 @@
 # imemo
-<img  align="right" src="https://imgur.com/qxEBvis.png" width="150px">
+<img  align="right" src="https://imgur.com/qxEBvis.png" width="120px">
 
 [![GoDoc](https://godoc.org/github.com/kcwebapply/imemo?status.svg)](https://godoc.org/github.com/kcwebapply/imemo)
 ![Go Report Card](https://goreportcard.com/badge/github.com/kcwebapply/imemo)
@@ -13,8 +13,6 @@
 - [add (add memo)](#add)
 - [rm (delete memo)](#rm)
 - [clear (delete all memo)](#clear)
-
-<! --<img src="https://imgur.com/La20wdF.gif" width="500px" height="300px"> -->
 
 ## Installation
 
