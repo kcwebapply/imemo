@@ -1,5 +1,5 @@
 # imemo
-<img  align="right" src="image/imemo.png" width="100px">
+<img  align="right" src="https://imgur.com/qxEBvis.png" width="120px">
 
 [![GoDoc](https://godoc.org/github.com/kcwebapply/imemo?status.svg)](https://godoc.org/github.com/kcwebapply/imemo)
 ![Go Report Card](https://goreportcard.com/badge/github.com/kcwebapply/imemo)
@@ -8,7 +8,11 @@
 
 `imemo` is very simple `memo` tool for terminal.
 
-![sample-demo](https://imgur.com/56c9MuR.gif)
+
+- [ls (show memo list)](#ls)
+- [add (add memo)](#add)
+- [rm (delete memo)](#rm)
+- [clear (delete all memo)](#clear)
 
 ## Installation
 
@@ -21,60 +25,53 @@ brew install imemo
 
 ## Usage
 
-### show memo list
-listing all memo. `imemo a` also available.
+### ls
+`imemo ls` list all memo.  
+
+
+<img src="https://imgur.com/UkavgEa.gif" width="500px">
+
 
 ```
-> imemo all 
+> imemo ls 
 ----------------------------------------------------------------------------------
 | 1| playing tennis with Mike on Next  Tuesday                                   |
 | 2| meeting at 13:30                                                            |
 ----------------------------------------------------------------------------------
 ```
 
-### save new memo
-please input what you want to write on memo.
+### add 
+`imemo add` add what you want to write.
 
-![sample-demo](https://imgur.com/whWhi0X.gif)
+<img src="https://imgur.com/WlfzW7Z.gif" width="500px">
 
-`imemo s` also available.
 
 ```
-> imemo save "meeting at 13:30"
+> imemo add "meeting at 13:30"
 ----------------------------------------------------------------------------------
 | 2| meeting at 13:30                                                            |
 ----------------------------------------------------------------------------------
 memo saved!
 ```
 
-## delete memo
+## rm
 please input memo's Id which you want to delete.
 
-![sample-demo](https://imgur.com/ekB0A1M.gif)
+<img src="https://imgur.com/9y2Osxq.gif" width="500px">
 
 ```
-> imemo d 2
+> imemo rm 2
 ----------------------------------------------------------------------------------
 | 2| meeting at 13:30                                                            |
 ----------------------------------------------------------------------------------
 memo deleted!
 ```
 
-## edit memo
-`imemo edit` edit memo data.
 
-![sample-demo](https://imgur.com/56AxBqS.gif)
-
-```
-> imemo e 
->> xxx  // input new memo.
-memo edited!
-```
-
-## clear memo
+## clear
 `imemo clear` delete all memo data.
 
-![sample-demo](https://imgur.com/NvdI1Mi.gif)
+<img src="https://imgur.com/6c6dJPt.gif" width="500px">
 
 ```
 > imemo clear
