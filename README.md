@@ -8,7 +8,8 @@
 
 `imemo` is very simple `memo` tool for terminal.
 
-![sample-demo](https://imgur.com/La20wdF.gif)
+
+<img src="https://imgur.com/La20wdF.gif" width="500px" height="300px">
 
 ## Installation
 
@@ -24,7 +25,9 @@ brew install imemo
 ### Ls
 `imemo ls` list all memo.  
 
-![sample-demo](https://imgur.com/UkavgEa.gif)
+
+<img src="https://imgur.com/UkavgEa.gif" width="500px">
+
 
 ```
 > imemo ls 
@@ -37,7 +40,7 @@ brew install imemo
 ### add new memo
 `imemo add` add what you want to write.
 
-![sample-demo](https://imgur.com/WlfzW7Z.gif)
+<img src="https://imgur.com/WlfzW7Z.gif" width="500px">
 
 
 ```
@@ -51,7 +54,7 @@ memo saved!
 ## delete memo
 please input memo's Id which you want to delete.
 
-![sample-demo](https://imgur.com/9y2Osxq.gif)
+<img src="https://imgur.com/9y2Osxq.gif" width="500px">
 
 ```
 > imemo rm 2
@@ -65,7 +68,7 @@ memo deleted!
 ## clear memo
 `imemo clear` delete all memo data.
 
-![sample-demo](https://imgur.com/6c6dJPt.gif)
+<img src="https://imgur.com/6c6dJPt.gif" width="500px">
 
 ```
 > imemo clear
