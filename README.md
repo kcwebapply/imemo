@@ -1,5 +1,5 @@
 # imemo
-<img  align="right" src="https://imgur.com/qxEBvis.png" width="100px">
+<img  align="right" src="https://imgur.com/qxEBvis.png" width="150px">
 
 [![GoDoc](https://godoc.org/github.com/kcwebapply/imemo?status.svg)](https://godoc.org/github.com/kcwebapply/imemo)
 ![Go Report Card](https://goreportcard.com/badge/github.com/kcwebapply/imemo)
