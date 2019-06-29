@@ -8,7 +8,7 @@
 
 `imemo` is very simple `memo` tool for terminal.
 
-![sample-demo](https://imgur.com/56c9MuR.gif)
+![sample-demo](https://imgur.com/La20wdF.gif)
 
 ## Installation
 
@@ -21,26 +21,27 @@ brew install imemo
 
 ## Usage
 
-### show memo list
-listing all memo. `imemo a` also available.
+### Ls
+`imemo ls` list all memo.  
+
+![sample-demo](https://imgur.com/UkavgEa.gif)
 
 ```
-> imemo all 
+> imemo ls 
 ----------------------------------------------------------------------------------
 | 1| playing tennis with Mike on Next  Tuesday                                   |
 | 2| meeting at 13:30                                                            |
 ----------------------------------------------------------------------------------
 ```
 
-### save new memo
-please input what you want to write on memo.
+### add new memo
+`imemo add` add what you want to write.
 
-![sample-demo](https://imgur.com/whWhi0X.gif)
+![sample-demo](https://imgur.com/WlfzW7Z.gif)
 
-`imemo s` also available.
 
 ```
-> imemo save "meeting at 13:30"
+> imemo add "meeting at 13:30"
 ----------------------------------------------------------------------------------
 | 2| meeting at 13:30                                                            |
 ----------------------------------------------------------------------------------
@@ -50,31 +51,21 @@ memo saved!
 ## delete memo
 please input memo's Id which you want to delete.
 
-![sample-demo](https://imgur.com/ekB0A1M.gif)
+![sample-demo](https://imgur.com/9y2Osxq.gif)
 
 ```
-> imemo d 2
+> imemo rm 2
 ----------------------------------------------------------------------------------
 | 2| meeting at 13:30                                                            |
 ----------------------------------------------------------------------------------
 memo deleted!
 ```
 
-## edit memo
-`imemo edit` edit memo data.
-
-![sample-demo](https://imgur.com/56AxBqS.gif)
-
-```
-> imemo e 
->> xxx  // input new memo.
-memo edited!
-```
 
 ## clear memo
 `imemo clear` delete all memo data.
 
-![sample-demo](https://imgur.com/NvdI1Mi.gif)
+![sample-demo](https://imgur.com/6c6dJPt.gif)
 
 ```
 > imemo clear
