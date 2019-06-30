@@ -33,26 +33,55 @@ brew install imemo
 
 
 ```
-> imemo ls 
-----------------------------------------------------------------------------------
-| 1| playing tennis with Mike on Next  Tuesday                                   |
-| 2| meeting at 13:30                                                            |
-----------------------------------------------------------------------------------
+> imemo ls
+
+default
+------------------------------------------------------------------------------------------
+| 1| Meething with Tom at 14:00                                                          |
+------------------------------------------------------------------------------------------
+
+business
+------------------------------------------------------------------------------------------
+| 2| Reserve a flight                                                                    |
+------------------------------------------------------------------------------------------
+
 ```
 
-### add 
+All memo are listed  grouped by `category` .
+
+You can specify category when you add new memo.
+
+
+
+### add
 `imemo add` add what you want to write.
 
 <img src="https://imgur.com/WlfzW7Z.gif" width="500px">
 
 
+
 ```
-> imemo add "meeting at 13:30"
-----------------------------------------------------------------------------------
-| 2| meeting at 13:30                                                            |
-----------------------------------------------------------------------------------
+> imemo add "Meething with Tom at 14:00"
+>> Meething with Tom at 14:00
+memo saved!
+
+```
+
+you san save memo with `category` .
+
+```
+> imemo add "Reserve a flight" business
+>> Reserve a flight
 memo saved!
 ```
+
+In this case, 3rd Argument `"business"` is category.
+
+Then, you can check that memo within `"business"` category .
+
+(sample is [here](#ls).)
+
+
 
 ## rm
 please input memo's Id which you want to delete.
@@ -68,6 +97,7 @@ memo deleted!
 ```
 
 
+
 ## clear
 `imemo clear` delete all memo data.
 
@@ -77,6 +107,3 @@ memo deleted!
 > imemo clear
 clear 2 memo !
 ```
-
-
-
